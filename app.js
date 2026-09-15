@@ -1,7 +1,7 @@
 // --- CONFIGURATION SUPABASE ---
 // Remplace ces valeurs par tes clés Supabase (Gratuit sur supabase.com)
-const SUPABASE_URL = "https://TON_PROJET.supabase.co";
-const SUPABASE_KEY = "TA_CLE_ANONYME_PUBLIC";
+const SUPABASE_URL = "https://higwxascgbopxjrjjgyc.supabase.co/rest/v1/";
+const SUPABASE_KEY = "sb_publishable_l9mxXNOJ2gh_lGHTK7KlNg_0L4Th3R0";
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let quizQuestions = [];
