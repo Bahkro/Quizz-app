@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Équipe - Culture Pop & Médias</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>🎬 Culture Quiz Équipe</h1>
+      <p>Proposez vos références culte et lancez des quiz à tout moment !</p>
+    </header>
+
+    <!-- Navigation entre les modes -->
+    <nav>
+      <button id="nav-add-btn" class="active" onclick="switchTab('add')">➕ Proposer une référence</button>
+      <button id="nav-quiz-btn" onclick="switchTab('quiz')">🚀 Lancer le Quiz (<span id="count-badge">0</span>)</button>
+    </nav>
+
+    <!-- FORMULAIRE DE PROPOSITION -->
+    <section id="tab-add" class="tab-content active">
+      <h2>Ajouter une proposition</h2>
+      <form id="proposal-form">
+        <label for="category">Catégorie :</label>
+        <select id="category" required>
+          <option value="Cinéma">🎬 Cinéma</option>
+          <option value="Série TV">📺 Série TV</option>
+          <option value="Musique">🎵 Musique</option>
+          <option value="Livre">📚 Livre / BD</option>
+        </select>
+
+        <label for="media_type">Type de média :</label>
+        <select id="media_type" onchange="toggleMediaInputs()" required>
+          <option value="quote">💬 Phrase / Citation culte</option>
+          <option value="image">🖼️ Image (URL)</option>
+          <option value="video">🎥 Vidéo YouTube (URL)</option>
+        </select>
+
+        <!-- Champ texte pour la citation -->
+        <div id="group-quote" class="media-input-group">
+          <label for="content_quote">La phrase ou la citation :</label>
+          <textarea id="content_quote" placeholder="Ex: On ne laisse pas Bébé dans un coin."></textarea>
+        </div>
+
+        <!-- Champ URL pour l'image ou la vidéo -->
+        <div id="group-url" class="media-input-group hidden">
+          <label for="content_url">Lien du média (URL directe d'image ou vidéo YouTube) :</label>
+          <input type="url" id="content_url" placeholder="https://...">
+        </div>
+
+        <label for="answer">Bonne réponse (Titre de l'œuvre / Artiste) :</label>
+        <input type="text" id="answer" required placeholder="Ex: Dirty Dancing">
+
+        <label for="options">3 fausses réponses (séparées par des virgules) :</label>
+        <input type="text" id="options" placeholder="Ex: Grease, Footloose, La Fièvre du samedi soir">
+
+        <button type="submit" class="btn-primary">Enregistrer la proposition</button>
+      </form>
+    </section>
+
+    <!-- INTERFACE DU QUIZ -->
+    <section id="tab-quiz" class="tab-content hidden">
+      <div id="quiz-intro">
+        <h2>Prêt pour le quiz ?</h2>
+        <p>Toutes les questions sont issues des propositions de l'équipe.</p>
+        <button onclick="startQuiz()" class="btn-success">Démarrer une partie</button>
+      </div>
+
+      <div id="quiz-box" class="hidden">
+        <div class="quiz-header">
+          <span id="quiz-category" class="badge"></span>
+          <span id="quiz-progress">Question 1/10</span>
+        </div>
+
+        <!-- Zone d'affichage du média -->
+        <div id="quiz-media-container"></div>
+
+        <div id="quiz-options" class="options-grid"></div>
+
+        <div id="quiz-feedback" class="feedback hidden"></div>
+
+        <button id="next-btn" class="btn-primary hidden" onclick="nextQuestion()">Question suivante ➔</button>
+      </div>
+
+      <div id="quiz-results" class="hidden">
+        <h2>🎉 Partie terminée !</h2>
+        <p id="score-text"></p>
+        <button onclick="startQuiz()" class="btn-primary">Rejouer une partie</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
