@@ -1,0 +1,143 @@
+:root {
+  --primary-color: #4f46e5;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --bg-color: #f3f4f6;
+  --card-bg: #ffffff;
+  --text-color: #1f2937;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 650px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+nav button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: #e5e7eb;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+nav button.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.tab-content { display: block; }
+.hidden { display: none !important; }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+input, select, textarea {
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button.btn-primary, button.btn-success {
+  padding: 12px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button.btn-primary { background: var(--primary-color); }
+button.btn-success { background: var(--success-color); font-size: 1.2rem; }
+
+/* Media styling */
+.quote-box {
+  background: #f8fafc;
+  border-left: 4px solid var(--primary-color);
+  padding: 20px;
+  font-size: 1.3rem;
+  font-style: italic;
+  margin: 20px 0;
+}
+
+.media-img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 15px 0;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  margin: 15px 0;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  border-radius: 8px;
+}
+
+/* Quiz layout */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.option-btn {
+  padding: 15px;
+  border: 2px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.option-btn:hover { border-color: var(--primary-color); }
+.option-btn.correct { background: #d1fae5; border-color: var(--success-color); }
+.option-btn.wrong { background: #fee2e2; border-color: var(--danger-color); }
+
+.badge {
+  background: #e0e7ff;
+  color: var(--primary-color);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
